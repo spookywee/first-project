@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Statistics</title>
+</head>
+<style>
+
+	body{
+		/*background: #d5ecff;*/
+		/*font-style: ;*/
+        margin: 0;
+        padding: 0;
+        border:none;
+        font-family: "Arial";
+        background: #C4E6FF;
+
+
+	}
+    .diagram {
+        width: 50%;
+        height: 50%;
+        /*background: white;*/
+        /*display:inline-flex;*/
+        /*border:1px solid black;*/
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        border-radius: 8px;
+        margin-left:25%;
+        padding-bottom: 20px;
+        background: white;
+    }
+
+    .menu{
+        background-color:#0B3859; 
+        width:100%;
+        height: 50px;
+        padding: 5px;
+    }
+
+    a {
+    	text-decoration: none;
+        /*border: 1px solid black;*/
+        padding:5px;
+        margin: 10px;
+        border-radius: 8px;
+        color:#C4E6FF;
+        background: #0F4E7B;
+    }
+
+    ul{
+        text-align: center;
+        margin-right: 50px;
+    }
+
+    li{
+        list-style: none;
+        display:inline;
+    }
+
+   /* canvas{
+    	display:inline-flex;
+    }*/
+
+    .whatsup h2{
+    	color: #69D938;
+    	background: #DCF9CF;
+        border-radius: 8px;
+    }
+
+    .vk h2{
+    	color: #1697F5;
+    	background: #DCF0FF;
+        border-radius: 8px;
+    }
+
+
+    h2{
+    	text-align: center;
+    	/*border:1px solid black;*/
+    	padding-top:5px;
+    	padding-bottom: 5px;
+    }
+
+    .input{
+        margin-top:20px;
+        text-align:center;
+    }
+
+    #name{
+        width: 350px;
+        height: 40px;
+        font-size: 24px;
+        border-radius: 8px;
+        border:1px solid #0F4E7B;
+        padding-left: 5px;
+   }
+
+   #sel{
+        height: 40px;
+        font-size: 24px;
+        margin-bottom: 10px;
+        background-color: white;
+        border-radius: 8px;
+   }
+
+    #sel:hover{
+        transition: 0.2s;
+       background: #0F4E7B;
+       color:white;
+       border-radius: 8px;
+   }
+
+   #btn{
+
+        height: 40px;
+        font-size: 24px;
+        padding-right: 20px;
+        padding-left: 20px;
+        background-color: white;
+        border:1px solid #0F4E7B;
+        border-radius: 8px;
+   }
+
+   #btn:hover{
+        transition: 0.2s;
+       background: #0F4E7B;
+       color:white;
+       border-radius: 8px;
+   }
+
+
+   #result{
+    margin-top:10px;
+    font-size: 24px;
+   }
+
+   .date_form{
+    text-align: center;
+   }
+
+   label{
+
+    font-size: 30px;
+
+   }
+
+   .info{
+
+    text-align: center;
+
+   }
+
+   .info ul li{
+
+    list-style: none;
+    display: inline-flex;
+   }
+
+   .info ul li{
+
+    margin-left: 80px;
+    margin-right:80px;
+
+   }
+
+   .info ul li:last-child{
+
+    /*margin-bottom: -50px;*/
+   }
+
+   .left-info{
+
+    /*padding:10px;*/
+    /*padding-top: 60px;*/
+
+   }
+
+   /*верхнего, правого, нижнего и левого края.*/
+   
+   .right-info{
+    /*padding:10px;*/
+   }
+
+   .left-info p{
+
+    font-size: 24px;
+
+   }
+
+   .left-info p b{
+
+    font-size: 36px;
+
+   }
+
+     .right-info p{
+
+    font-size: 24px;
+
+   }
+
+   .right-info p b{
+
+    font-size: 34px;
+
+   } 
+
+
+
+
+</style>
+
+<body>
+	<div class="menu">
+        <ul>
+		    <li><a id = "whatsup" href = "#"> WhatsUp info</a></li>
+		    <li><a id = "vk" href = "#"> VK info</a></li>
+        </ul>
+    </div>
+
+    <div class = "input">
+        <label>@</label>
+        <input type = "text" name = "name" id = "name" placeholder="Input channel name...">
+        <select name = "sel" id = "sel">
+            <option value = "load" selected>load</option>
+            <option value = "join" >join</option>
+            <option value = "leave" >leave</option>
+            <option value = "show" >show</option>
+        </select><br>
+        <button id = "btn" type = "submit">Search</button>
+        <div class = "value"></div>
+    <!-- <div class = "change">
+    	hello, world!
+    </div> -->
+        <div id="result">
+
+        </div>
+    </div>
+
+	<div class = "whatsup">
+		<!-- <h2>Whatsup</h2> -->
+		<div class = "diagram">
+			<h2>Whatsup</h2>
+			<canvas id="myChart"></canvas>
+			<canvas id="condition"></canvas>
+	    </div>
+    </div>
+    <div class = "vk">
+	  <!--   <h2>VK</h2> -->
+	    <div class = "diagram"> 
+	    	<h2>VK</h2>
+	    	<canvas id="time"></canvas>
+	    </div>
+	</div>
+    	<!-- <h2>Social Networks</h2> -->
+
+         <div class = "main_stat">
+        <div class = "diagram">
+            <h2>Main Information</h2>
+            <div class = "info">
+                <ul>
+                    <li>
+                         <div class = 'left-info'>
+                            <p>Messages</p>
+                            <p><b id = "count"></b></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class = "right-info">
+                            <p>Last update</p>
+                            <p><b id = "last_date"></b></p>
+                            <p><strong id = "days"></strong> days ago</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class = "right-info">
+                            <p>Date of first message</p>
+                            <p><b id = "first_date"></b></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        
+    <div class = "t_stat">
+        <div class = "diagram">
+            <h2>Telegram channel statistics</h2>
+            <canvas id="net"></canvas>
+        </div>
+    </div>
+    <div class = "diagram" id = "d_stat"> 
+    	<h2>Statistics by Date</h2>
+        <!-- <div class = "date_form">
+            <input type = "date" name = "date_start" id = "date_start">
+            <input type = "date" name = "date_end" id = "date_end">
+            <button id = "timeBtn">Show</button>
+        </div> -->
+    	<canvas id = "statByDay"></canvas>
+    </div>
+
+    <div class = "del_stat">
+        <div class = "diagram">
+            <h2>Deleted messages</h2>
+            <canvas id="stat_del"></canvas>
+        </div>
+    </div>
+
+    <div class = "post"></div>
+    <div class = "post2"></div>
+
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="static/ex.js"></script>
+
+</html>
